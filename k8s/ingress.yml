@@ -1,0 +1,23 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: fringress
+  namespace: frinsult
+  annotations:
+    nginx.ingress.kubernetes.io/rewrite-target: /
+spec:
+  backend:
+    serviceName: default-http-backend
+    servicePort: 80
+  rules:
+  - http:
+      paths:
+      - path: /api
+        backend:
+          serviceName: gate
+          servicePort: 8080
+      - path: /
+        backend:
+          serviceName: front          
+          servicePort: 8080
+

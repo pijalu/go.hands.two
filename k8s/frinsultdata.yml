@@ -1,0 +1,62 @@
+---
+apiVersion: v1
+kind: Service
+metadata:
+  namespace: frinsult
+  name: data
+  labels:
+    app: data
+spec:
+  ports:
+  - port: 8080
+    protocol: TCP
+  selector:
+    app: datasrv
+---
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  namespace: frinsult
+  name: data
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: datasrv
+    spec:
+      serviceAccountName: micro-services
+      containers:
+        - name: datasrv
+          command: [
+          "/bin/fd",
+          "--server_address=0.0.0.0:8080",
+          "--broker_address=0.0.0.0:10001"
+          ]
+          image: muaddib/go.hands.two.data
+          imagePullPolicy: Always
+          env:
+          - name: USE_K8S
+            value: "true"
+          - name: DB_TYPE
+            value: "postgres"
+          - name: DB_PARAM
+            value: "host=postgres port=5432 user=gorm dbname=frinsult password=changeme sslmode=disable"
+          ports:
+          - containerPort: 8080
+            name: data-port            
+        - name: health
+          command: [
+          "/health",
+          "--health_address=0.0.0.0:8081",
+          "--server_name=frinsult.srv.micro",
+          "--server_address=0.0.0.0:8080"
+          ]
+          image: microhq/health:kubernetes
+          livenessProbe:
+            httpGet:
+              path: /health
+              port: 8081
+            initialDelaySeconds: 3
+            periodSeconds: 3
+

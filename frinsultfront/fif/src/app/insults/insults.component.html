@@ -1,0 +1,28 @@
+<div class="album py-5 bg-light">
+    <div class="container">
+
+      <div class="row" >
+        <div *ngFor="let insult of insults | sortBy: 'score'" class="col-md-4">
+          <div class="card mb-4 box-shadow">
+            <div class="card-body">
+              <p class="card-text">{{insult.text}}</p>
+              <div class="d-flex justify-content-between align-items-center">
+                <div class="btn-group">
+                  <button (click)="upvote(insult.id)" type="button" class="btn btn-sm btn-outline-secondary">
+                    <i class="fa fa-thumbs-up" aria-hidden="true"></i>
+                  </button>
+                  <button type="button" class="btn btn-sm btn-outline-secondary disabled">
+                      {{insult.score}}
+                  </button>                                 
+                  <button (click)="downvote(insult.id)" type="button" class="btn btn-sm btn-outline-secondary">
+                      <i class="fa fa-thumbs-down" aria-hidden="true"></i>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+

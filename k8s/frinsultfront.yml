@@ -1,0 +1,38 @@
+---
+apiVersion: v1
+kind: Service
+metadata:
+  namespace: frinsult
+  name: front
+  labels:
+    app: front
+spec:
+  ports:
+  - nodePort: 32080
+    port: 8080
+    protocol: TCP
+    targetPort: 8080
+  selector:
+    app: frontsrv
+  type: NodePort
+---
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  namespace: frinsult
+  name: front
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: frontsrv
+    spec:
+      containers:
+        - name: frontsrv
+          image: muaddib/go.hands.two.front
+          imagePullPolicy: Always
+          ports:
+          - containerPort: 8080
+            name: data-port            
+

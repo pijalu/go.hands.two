@@ -1,0 +1,208 @@
+{
+	"info": {
+		"_postman_id": "3952bd11-0e12-4c91-a3b9-9d4e3f1da6de",
+		"name": "frinsultgate",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Get all insults",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "http://127.0.0.1:8080/api/insults",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"insults"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Put insult",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"text\": \"Barbapapa\"\n}"
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8080/api/insults",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"insults"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "upvote",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8080/api/insults/upvote/7",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"insults",
+						"upvote",
+						"7"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "downvote",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"text\": \"Barbapapa\"\n}"
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8080/api/insults/downvote/7",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"insults",
+						"downvote",
+						"7"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete insult 1",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "http://127.0.0.1:8080/api/insults/1",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"insults",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get insult 1",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "http://127.0.0.1:8080/api/insults/1",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"insults",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get insult 5",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "http://127.0.0.1:8080/api/insults/7",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"insults",
+						"7"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

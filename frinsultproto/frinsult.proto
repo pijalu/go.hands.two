@@ -1,0 +1,35 @@
+syntax = "proto3";
+
+package frinsultproto;
+
+message Frinsult {
+	int64  ID    = 1;
+	string Text  = 2;
+	int64  Score = 3;
+}
+
+message Frinsults {
+	repeated Frinsult insults = 1;
+}
+
+message ByIDRequest {
+		int64  ID    = 1;
+}
+
+message VoteRequest {
+	int64 ID       = 1;
+	int64 vote     = 2;
+}
+
+message void {}
+
+service FrinsultService {
+	rpc GetFrinsultByID(ByIDRequest)    returns (Frinsult) {}
+	rpc DeleteFrinsultByID(ByIDRequest) returns (void) {}
+	rpc InsertFrinsult(Frinsult)        returns (Frinsult) {}
+	rpc UpdateFrinsult(Frinsult)        returns (void) {}
+	rpc VoteFrinsultByID(VoteRequest)   returns (void) {}
+	
+	rpc GetFrinsults(void)        returns (Frinsults) {}
+
+}
