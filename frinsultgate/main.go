@@ -50,7 +50,7 @@ func main() {
 	r.Methods("PUT").Path(prefix + "/insults").HandlerFunc(putInsult)
 
 	r.Methods("POST").Path(prefix + "/insults/upvote/{id:[0-9]+}").HandlerFunc(upvoteInsultByID)
-	// TODO: Add downvote !
+	r.Methods("POST").Path(prefix + "/insults/downvote/{id:[0-9]+}").HandlerFunc(downvoteInsultByID)
 
 	r.Methods("GET").Path(prefix + "/insults").HandlerFunc(getInsults)
 

@@ -1,7 +1,6 @@
 package repository
 
 import (
-	"errors"
 	"log"
 
 	"github.com/jinzhu/gorm"
@@ -74,10 +73,14 @@ func InsertFrinsult(f *model.Frinsult) (*model.Frinsult, error) {
 
 // GetFrinsults returns a list of frinsult
 func GetFrinsults() ([]model.Frinsult, error) {
-	// TODO: Return a list of insults !
-	// db.Find([]model.Frinsult) may help
+	log.Printf("Listing insults")
+	f := make([]model.Frinsult, 0, 200)
 
-	return nil, errors.New("TODO")
+	return f, withDB(func(db *gorm.DB) error {
+		db.Find(&f)
+		return nil
+	})
+
 }
 
 // VoteForFrinsult update the score by the vote value

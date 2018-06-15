@@ -80,6 +80,8 @@ func deleteInsultByID(w http.ResponseWriter, r *http.Request) {
 
 	if _, err := friService.DeleteFrinsultByID(r.Context(),
 		&frinsultproto.ByIDRequest{ID: int64(id)}); err != nil {
+		w.WriteHeader(http.StatusInternalServerError)
+		w.Write([]byte(fmt.Sprintf("Failed to delete ID %d: %s", id, err.Error())))
 		return
 	}
 
@@ -182,4 +184,6 @@ func upvoteInsultByID(w http.ResponseWriter, r *http.Request) {
 	voteInsultByID(w, r, 1)
 }
 
-// TODO: Downvote handler !
+func downvoteInsultByID(w http.ResponseWriter, r *http.Request) {
+	voteInsultByID(w, r, -1)
+}
