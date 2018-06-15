@@ -1,6 +1,12 @@
 # Go Hands Two
 The second gomming of the go workshop
 
+## env
+A env helper package
+
+## postman
+A Postman json to help with dev
+
 ## frinsultfront
 That's the front end !
 Nothing to do here... just a angular6 front served by a simple go app
